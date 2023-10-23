@@ -28,11 +28,36 @@ class Game {
         this.timer ++;
 
 
+        // Movimiento horizontal y vertical de: ball, blitz, batter, pitcher
+        ballX += 5;
+        ballNode.style.top = `${ballX}px`; // Movimiento arriba hacia abajo
+
+        blitzX += 5;
+        blitzNode.style.top = `${blitzX}px`; // Movimiento arriba hacia abajo
+
+        batterX += 2;
+        batterNode.style.left = `${batterX}px`; // Movimiento de izquierda a derecha
+
+        pitcherX -= 2;
+        pitcherNode.style.left = `${pitcherX}px`; // Movimiento de derecha a izquierda
+
+
         // recursion
         requestAnimationFrame(this.gameLoop);
     }
 
 }
+
+/*function gameLoop2() {
+    //console.log("gameLoop2");
+
+    
+
+    requestAnimationFrame(gameLoop2);
+}
+
+gameLoop2();*/
+
 
 
 

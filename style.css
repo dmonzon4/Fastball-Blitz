@@ -52,7 +52,7 @@ body {
     user-select: none; /* this will prevent elements from being highlighted */
   
   
-    background-image: url('./Bilder/field-cartoon.jpg');
+    background-image: url('./Bilder/field-cartoon-fn.jpg');
     background-position: center;
     background-size: contain;
   }
@@ -61,7 +61,7 @@ body {
     width: 10px;
     height: 10px;
     position: absolute;
-    top: 0px;
+    top: 25px;
     left: 0px;
 
   }
@@ -70,7 +70,7 @@ body {
     width: 10px;
     height: 10px;
     position: absolute;
-    top: 0px;
+    top: 20px;
     left: 30px;
 
   }
@@ -80,7 +80,7 @@ body {
     height: 10px;
     position: absolute;
     top: 15px;
-    left: 120px;
+    left: 480px;
 
   }
 
@@ -89,7 +89,7 @@ body {
     height: 10px;
     position: absolute;
     top: 685px;
-    left: 60px;
+    left: 0px;
 
   }
   
