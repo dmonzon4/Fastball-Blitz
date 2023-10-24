@@ -31,26 +31,37 @@ class Game {
 
 
 
-        pitcherMovement();
+        playersMovement();
         collisions (); // invocando función del movimiento de la bola, blitz, batter, pitcher
+
+        batterCollision();
         
         // recursion
+        //if (isGameOn === true) {
         requestAnimationFrame(this.gameLoop);
     }
 
 }
 
 
+// addEventListeners
+// control del batter con las teclas
+document.addEventListener('keydown', (event) => {
+    //console.log('presionando una tecla'); // verificando que la consola reconoce la orden 
+    console.log(event.code); // auch: 'event.key' indica que tecla se está presionando
+    if (event.code === 'KeyA' && batterX > -1) { // indica la tecla para la izq. y el limite izq. del gamebox para el batter
+        //console.log('moviendo a la izq.');
 
-/*function gameLoop2() {
-    //console.log("gameLoop2");
+        batterX -= batterSpeed;
+        batterNode.style.left = `${batterX}px`;
+    } else if (event.code === 'KeyD' && batterX < gameBoxWidth - 10) { // indica la tecla para la der. y el limite der. del gamebox para el batter
+        //console.log('moviendo a la der.');
+        batterX += batterSpeed;
+        batterNode.style.left = `${batterX}px`;
+    }
+});
 
-    
 
-    requestAnimationFrame(gameLoop2);
-}
-
-gameLoop2();*/
 
 
 
