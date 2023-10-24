@@ -5,7 +5,7 @@ body {
 
   #start-btn {
     background-color: red;
-    color: white;
+    color: black;
     padding: 20px;
     font-size: 20px;
     margin-top: 30px;
@@ -47,11 +47,9 @@ body {
     background-color: darkgray;
     width:530px;
     height:795px;
-    overflow: hidden; /* this will prevent element from been visible outside the game box */
+    /*overflow: hidden; /* this will prevent element from been visible outside the game box */
     position: relative; /* this will allow elements to be positioned relative to the game-box */
     user-select: none; /* this will prevent elements from being highlighted */
-  
-  
     background-image: url('./Bilder/field-cartoon-fn.jpg');
     background-position: center;
     background-size: contain;
@@ -94,7 +92,14 @@ body {
   }
   
   
-  #game-screen, #gameover-screen {
+  #game-screen {
     display: none;
+    flex-direction: row;
+    
   }
   
+  #gameover-screen {
+    display: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
