@@ -31,7 +31,7 @@ class Game {
 
 
 
-        elementsMovement();
+        pitcherMovement();
         collisions (); // invocando función del movimiento de la bola, blitz, batter, pitcher
         
         // recursion

@@ -72,13 +72,14 @@ body {
     left: 30px;
 
   }
+  
 
   #pitcher {
     width: 10px;
     height: 10px;
     position: absolute;
     top: 15px;
-    left: 480px;
+    left: 15px;
 
   }
 
