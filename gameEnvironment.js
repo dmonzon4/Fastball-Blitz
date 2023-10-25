@@ -2,14 +2,12 @@ console.log("probe");
 
 class Game {
     constructor() {
+        this.isGameOn = true;
+        this.player = new Player ();
+        //this.elements = new Elements ();
         // cosas dentro del juego
 
-            // batter
-                // velocidad de movimiento
-            // pitcher
-                // velocidad de movimiento
-            // ball
-                // velocidad de movimiento
+    
         this.timer = 0; // 60/seg.
     }
 
@@ -30,36 +28,44 @@ class Game {
         this.timer ++;
 
 
+        /*// Calcula el tiempo actual en milisegundos
+        const currentTime = performance.now();
 
-        playersMovement();
-        collisions (); // invocando función del movimiento de la bola, blitz, batter, pitcher
+        // Verifica si es el momento de crear un nuevo elemento
+        if (currentTime - this.lastElementTime >= (this.isCreatingBall ? this.ballInterval : this.blitzInterval)) {
+            if (this.isCreatingBall) {
+            createBall();
+            } else {
+            createBlitz();
+            }
 
-        batterCollision();
+            this.isCreatingBall = !this.isCreatingBall; // Alternar entre bolas y blitze
+            this.lastElementTime = currentTime;
+        }
+
+        // Mueve las bolas y blitze existentes
+        moveBallsAndBlitzes();*/
+
+
+
+        //movement();
+        this.player.movement (); // class Player
+        //this.elements.movement2 (); // class Elements
+        this.player.wallCollisions ();
+        //collisions (); // invocando función del movimiento de la bola, blitz, batter, pitcher
+
+        //batterCollision();
         
         // recursion
-        //if (isGameOn === true) {
+        if (this.isGameOn === true) {
         requestAnimationFrame(this.gameLoop);
+        }
     }
 
 }
 
 
-// addEventListeners
-// control del batter con las teclas
-document.addEventListener('keydown', (event) => {
-    //console.log('presionando una tecla'); // verificando que la consola reconoce la orden 
-    console.log(event.code); // auch: 'event.key' indica que tecla se está presionando
-    if (event.code === 'KeyA' && batterX > -1) { // indica la tecla para la izq. y el limite izq. del gamebox para el batter
-        //console.log('moviendo a la izq.');
 
-        batterX -= batterSpeed;
-        batterNode.style.left = `${batterX}px`;
-    } else if (event.code === 'KeyD' && batterX < gameBoxWidth - 10) { // indica la tecla para la der. y el limite der. del gamebox para el batter
-        //console.log('moviendo a la der.');
-        batterX += batterSpeed;
-        batterNode.style.left = `${batterX}px`;
-    }
-});
 
 
 
