@@ -1,11 +1,16 @@
 body {
     margin: 0;
-    background-color: green;
+    background-image: url(./Bilder/field-start-blau.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
   }
 
   #start-btn {
-    background-color: red;
-    color: black;
+    background: blue;
+    color: white;
+    cursor: pointer;
     padding: 20px;
     font-size: 20px;
     margin-top: 30px;
@@ -55,12 +60,12 @@ body {
     background-size: contain;
   }
 
-  #ball {
+  /* #ball {
     width: 10px;
     height: 10px;
     position: absolute;
     top: 25px;
-    left: 0px;
+    left: 0px; */
 
   }
 
@@ -70,7 +75,6 @@ body {
     position: absolute;
     top: 20px;
     left: 200px;
-
   }
   
 

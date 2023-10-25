@@ -36,14 +36,6 @@ let gameBoxNode = document.querySelector("#game-box");
 // let blitzX = 10; // posición inicial del blitz
 // let blitzSpeed = 5; // velocidad de movimiento del blitz
 
-//#extras
-// let balls = [];
-// let blitzes = [];
-// let lastElementTime = 0;
-// let isCreatingBall = true; // Comienza creando una bola
-// let ballInterval = 1000;
-// let blitzInterval = 1000;
-
 
 let gameBoxWidth = 490;
 let gameBoxHeight = 795;
@@ -51,8 +43,6 @@ let gameBoxHeight = 795;
 
 //let isGameOn = true;
 let gameObject = undefined;
-
-
 
 
 // function playersMovement () { // función encargada del pitcher

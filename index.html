@@ -10,15 +10,22 @@
     
 
     <!-- SPLASH SCREEN -->
+    <!--<div class="image-container">
+      <img class="image1" src="./Bilder/Text-Blitz(Rot)2.png" alt="blitz">
+      <img class="image2" src="./Bilder/Text-Blitz(Gelb).png" alt="blitz">
+    </div>-->
+
+
     <div id="splash-screen" class="container">
       <img src="./Bilder/Text-FastBall-2.png" width="500" alt="logo" />
       <br>
       <br>
-      <img src="./Bilder/Text-Blitz(Rot)2.png" width="250" alt="logo" />
+      <img class="image1" src="./Bilder/Text-Blitz(Rot)2.png" alt="blitz">
+      <img class="image2" src="./Bilder/Text-Blitz(Gelb)2.png" alt="blitz">
     </div>
     <div id="field-image">
       <img src="./Bilder/start-field.jpg" width="300" alt="logo" />
-      <button id="start-btn">Start!</button>
+      <button id="start-btn">Start</button>
     </div>
 
     <!-- GAME SCREEN -->
@@ -27,10 +34,10 @@
       <div id="game-box">
         <!-- Game elements are added here -->
         <div id="ball">
-          <img src="./Bilder/ball.png" width="30" alt="ball" />
+          <!-- <img src="./Bilder/ball.png" width="30" alt="ball" /> -->
         </div>
         <div id="blitz">
-          <img src="./Bilder/blitz.png" width="50" alt="blitz" />
+          <!-- <img src="./Bilder/blitz.png" width="50" alt="blitz" /> -->
         </div>
         <div id="batter">
           <img src="./Bilder/batter.png" width="100" alt="blitz" />
@@ -44,7 +51,12 @@
     
     <!-- GAME OVER SCREEN -->
     <div id="gameover-screen" class="container">
-      <img src="./Bilder/gameover.png" width="500" alt="logo">
+      <img src="./Bilder/gameover.png" width="500" alt="logo" />
+      <br>
+      <br>
+    <div id="field-image">
+      <img src="./Bilder/gameOver-B2.png" width="300" alt="logo" />
+      <button id="start-btn">Start!</button>
     </div>
 
     
@@ -52,6 +64,8 @@
     <script src="./main.js"></script>
     <script src="./gameEnvironment.js"></script>
     <script src="./player.js"></script>
-    <script src="./elements.js"></script>
+    <script src="./pitcher.js"></script>
+    <script src="./ball.js"></script>
+    <script src="./blitz.js"></script>
   </body>
 </html>

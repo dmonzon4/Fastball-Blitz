@@ -3,13 +3,71 @@ console.log("probe");
 class Game {
     constructor() {
         this.isGameOn = true;
+        
         this.player = new Player ();
-        //this.elements = new Elements ();
-        // cosas dentro del juego
+        this.pitcher = new Pitcher ();
+        // this.ball = new Ball (); // propiedades antiguas
+        // this.blitz = new Blitz (); // propiedades antiguas
+        this.oneBall = new Ball ();
+        this.oneBlitz = new Blitz (); 
 
+        this.ballArr = [];
+        this.blitzArr = [];
     
         this.timer = 0; // 60/seg.
     }
+
+    ballAppear = () => {
+    // determinar cuando voy a agregar elementos al array
+    if (this.timer % 120 === 0) {
+
+        let randomPosition = Math.random() * 50; // -100 y 0
+
+        let newBall = new Ball("left", randomPosition);
+        this.ballArr.push(newBall);
+
+        let newBallRight = new Blitz("right", randomPosition + 300);
+        this.ballArr.push(newBallRight);
+
+        console.log(this.ballArr.length);
+    }
+
+    };
+    
+    // HACER DESAPARECER LAL BALLS
+    blitzDisappear = () => {
+        if (this.blitzArr[0].x < 0) {
+            // this.obstacleArr.splice(0,1); // otra opcion a lo que sigue abajo
+            this.blitzArr[0].node.remove(); // remueve el nodo del DOM
+            this.blitzArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
+        }
+    }
+
+    ballAppear = () => {
+        // determinar cuando voy a agregar elementos al array
+        if (this.timer % 120 === 0) {
+    
+            let randomPosition = Math.random() * 75; // -100 y 0
+    
+            let newBlitz = new Ball("right", randomPosition);
+            this.blitzArr.push(newBlitz);
+    
+            let newBlitzleft = new Blitz("left", randomPosition + 350);
+            this.ballArr.push(newBlitzleft);
+    
+            console.log(this.blitzArr.length);
+        }
+    
+        };
+        
+        // HACER DESAPARECER LOS BLITZES
+        blitzDisappear = () => {
+            if (this.blitzArr[0].x < 0) {
+                // this.obstacleArr.splice(0,1); // otra opcion a lo que sigue abajo
+                this.blitzArr[0].node.remove(); // remueve el nodo del DOM
+                this.blitzArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
+            }
+        }
 
         // acciones dentro del juego
             // hitting
@@ -28,31 +86,22 @@ class Game {
         this.timer ++;
 
 
-        /*// Calcula el tiempo actual en milisegundos
-        const currentTime = performance.now();
-
-        // Verifica si es el momento de crear un nuevo elemento
-        if (currentTime - this.lastElementTime >= (this.isCreatingBall ? this.ballInterval : this.blitzInterval)) {
-            if (this.isCreatingBall) {
-            createBall();
-            } else {
-            createBlitz();
-            }
-
-            this.isCreatingBall = !this.isCreatingBall; // Alternar entre bolas y blitze
-            this.lastElementTime = currentTime;
-        }
-
-        // Mueve las bolas y blitze existentes
-        moveBallsAndBlitzes();*/
-
-
-
+        
         //movement();
-        this.player.movement (); // class Player
-        //this.elements.movement2 (); // class Elements
+        this.player.movement (); // mvieminto del batter
+        this.pitcher.movement (); // moviemiento del pitcher
+        // this.ball.movement (); // moviemiento antiguo
+        // this.blitz.movement (); // moviemiento antiguo
+        this.oneBall.automaticMovement ();
+
+        
+
+
         this.player.wallCollisions ();
+        this.pitcher.wallCollisions ();
         //collisions (); // invocando función del movimiento de la bola, blitz, batter, pitcher
+        
+
 
         //batterCollision();
         
@@ -61,6 +110,28 @@ class Game {
         requestAnimationFrame(this.gameLoop);
         }
     }
+
+
+
+
+
+
+    // AJUSTAR!!!
+    gameOver = () => {
+        // 1. la recursion deberia terminar
+        this.GameOn = false;
+        // 1.1 si tenemos intervalos deberiamos limpiarlos
+        // 2. ocultar pantalla d ejuego
+        gameScreenNode.style.display = 'none';
+        //3. mostrar pantalla de Game Over
+        gameOverScreenNode.style.display = 'flex';
+      }
+    
+      collisionBlitzFloor = () => {
+        if (this.blitz.blitzY > 750) {
+            this.gameOver();
+        }
+      }
 
 }
 
