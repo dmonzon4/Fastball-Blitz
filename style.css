@@ -82,7 +82,7 @@ body {
     background-color: darkgray;
     width:530px;
     height:795px;
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
     user-select: none;
     background-image: url('./Bilder/field-cartoon-fn.jpg');

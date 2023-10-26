@@ -9,8 +9,8 @@ class Game {
         this.pitcher = new Pitcher ();
         // this.ball = new Ball (); // propiedades antiguas
         // this.blitz = new Blitz (); // propiedades antiguas
-        this.oneBall = new Ball ();
-        this.oneBlitz = new Blitz (); 
+        // this.oneBall = new Ball ();
+        // this.oneBlitz = new Blitz (); 
 
         this.ballArr = [];
         this.blitzArr = [];
@@ -20,54 +20,59 @@ class Game {
 
     ballAppear = () => {
     // determinar cuando voy a agregar elementos al array
-    if (this.timer % 120 === 0) {
+        if (this.timer % 120 === 0) {
 
-        let randomPosition = Math.random() * -100; // -100 y 0
+            let randomPosition = Math.random() * -700; // -100 y 0
 
-        let newBall = new Ball("top", randomPosition);
-        this.ballArr.push(newBall);
+            let newBall = new Ball("top", randomPosition);
+            this.ballArr.push(newBall);
 
-        let newBallBottom = new Ball("Top", randomPosition + 300);
-        this.ballArr.push(newBallBottom);
+            let newBallBottom = new Ball("Bottom", randomPosition + 800);
+            this.ballArr.push(newBallBottom);
 
-        console.log(this.ballArr.length);
-    }
+            console.log(this.ballArr.length);
+        }
 
     };
     
-    // HACER DESAPARECER LAL BALLS
+    blitzAppear = () => {
+        // determinar cuando voy a agregar elementos al array
+            if (this.timer % 120 === 0) {
+    
+                let randomPosition = Math.random() * -700; // -100 y 0
+    
+                let newBlitz = new Blitz("top", randomPosition);
+                this.blitzArr.push(newBlitz);
+    
+                let newBlitzBottom = new Blitz("Bottom", randomPosition + 800);
+                this.blitzArr.push(newBlitzBottom);
+    
+                console.log(this.blitzArr.length);
+            }
+    
+        };
+
+
+
+    // HACER DESAPARECER LAS BALLS
     ballDisappear = () => {
-        if (this.ballArr[0].x < 0) {
+        if (this.ballArr[0].ballX < 0) {
             // this.obstacleArr.splice(0,1); // otra opcion a lo que sigue abajo
             this.ballArr[0].ballNode.remove(); // remueve el nodo del DOM
             this.ballArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
         }
     }
-
-    // blitzAppear = () => {
-    //     // determinar cuando voy a agregar elementos al array
-    //     if (this.timer % 120 === 0) {
-    //         let randomPosition = Math.random() * -100; // -100 y 0
-
-    //         let newBlitz = new Blitz("top", randomPosition);
-    //         this.blitzArr.push(newBlitz);
-
-    //         let newBlitzBottom = new Blitz("Bottom", randomPosition + 300);
-    //         this.blitzArr.push(newBlitzBottom);
-
-    //         console.log(this.blitzArr.length);
-    //     }
-    
-    //     };
         
-    // // HACER DESAPARECER LOS BLITZES
-    // blitzDisappear = () => {
-    //     if (this.blitzArr[0].x < 0) {
-    //         // this.obstacleArr.splice(0,1); // otra opcion a lo que sigue abajo
-    //         this.blitzArr[0].blitzNode.remove(); // remueve el nodo del DOM
-    //         this.blitzArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
-    //     }
-    // }
+    // HACER DESAPARECER LOS BLITZES
+    blitzDisappear = () => {
+        if (this.blitzArr[0].blitzX < 0) {
+            // this.obstacleArr.splice(0,1); // otra opcion a lo que sigue abajo
+            this.blitzArr[0].blitzNode.remove(); // remueve el nodo del DOM
+            this.blitzArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
+        }
+    }
+    
+
 
     collisionCheckBall = () => {
         this.ballArr.forEach((eachBall) => {
@@ -75,7 +80,19 @@ class Game {
             eachBall.ballX + eachBall.ballW > this.batterX &&
             eachBall.ballY + eachBall.ballY > this.batterX &&
             eachBall.ballX + eachBall.ballH > this.batterX) { 
-            console.log ('colision batter');
+            console.log ('collision batter ball');
+            this.gameOver();
+            }
+        });
+    }
+
+    collisionCheckBlitz = () => {
+        this.blitzArr.forEach((eachBlitz) => {
+            if (eachBlitz.blitzX < this.batterX + this.batterX &&
+            eachBlitz.blitzX + eachBlitz.blitzW > this.batterX &&
+            eachBlitz.blitzY + eachBlitz.blitzY > this.batterX &&
+            eachBlitz.blitzX + eachBlitz.blitzH > this.batterX) { 
+            console.log ('collision batter blitz');
             this.gameOver();
             }
         });
@@ -89,9 +106,21 @@ class Game {
         this.ballArr.forEach((eachBall) => {
             eachBall.automaticMovement ();
         });
+        
+        
+
+        this.blitzArr.forEach((eachBlitz) => {
+            eachBlitz.automaticMovement ();
+        });
+
         this.ballAppear();
         this.collisionCheckBall();
         this.ballDisappear();
+        
+
+        this.blitzAppear();
+        this.collisionCheckBlitz();
+        this.blitzDisappear();
 
 
         //movement();
@@ -99,7 +128,7 @@ class Game {
         this.pitcher.movement (); // moviemiento del pitcher
         // this.ball.movement (); // moviemiento antiguo
         // this.blitz.movement (); // moviemiento antiguo
-        this.oneBall.automaticMovement ();
+        // this.oneBall.automaticMovement ();
 
 
         this.player.wallCollisions ();
@@ -132,6 +161,12 @@ class Game {
         gameOverScreenNode.style.display = 'flex';
       }
     
+      collisionBallFloor = () => {
+        if (this.ball.ballY > 750) {
+            this.gameOver();
+        }
+      }
+
       collisionBlitzFloor = () => {
         if (this.blitz.blitzY > 750) {
             this.gameOver();

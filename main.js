@@ -41,7 +41,6 @@ let gameBoxNode = document.querySelector("#game-box");
 let gameBoxWidth = 490;
 let gameBoxHeight = 795;
 
-
 //let isGameOn = true;
 let gameObject = undefined;
 
@@ -101,6 +100,7 @@ let gameObject = undefined;
 
 
 
+
 const startGame = () => {
     splashScreenNode.style.display = "none";
     fieldImageNode.style.display = "none";
@@ -129,14 +129,14 @@ backMenuBtnNode.addEventListener("click", backMenu);
 // control del batter con las teclas
 document.addEventListener('keydown', (event) => {
     //console.log('presionando una tecla'); // verificando que la consola reconoce la orden 
-    console.log(event.code); // auch: 'event.key' indica que tecla se está presionando
-    if (event.code === 'KeyA' && gameObject.player.x> -1) { // indica la tecla para la izq. y el limite izq. del gamebox para el batter
+    //console.log(event.code); // auch: 'event.key' indica que tecla se está presionando
+    if (event.code === 'KeyA' && gameObject.player.batterX -1) { // indica la tecla para la izq. y el limite izq. del gamebox para el batter
         //console.log('moviendo a la izq.');
-        gameObject.player.x -= gameObject.player.speed;
-        gameObject.player.node.style.left = `${gameObject.player.x}px`;
-    } else if (event.code === 'KeyD' && gameObject.player.x < gameBoxWidth - 10) { // indica la tecla para la der. y el limite der. del gamebox para el batter
+        gameObject.player.batterX -= gameObject.player.batterSpeed;
+        gameObject.player.batterNode.style.left = `${gameObject.player.batterX}px`;
+    } else if (event.code === 'KeyD' && gameObject.player.batterX < gameBoxWidth - 10) { // indica la tecla para la der. y el limite der. del gamebox para el batter
         //console.log('moviendo a la der.');
-        gameObject.player.x += gameObject.player.speed;
-        gameObject.player.node.style.left = `${gameObject.player.x}px`;
+        gameObject.player.batterX += gameObject.player.batterSpeed;
+        gameObject.player.batterNode.style.left = `${gameObject.player.batterX}px`;
     }
 });

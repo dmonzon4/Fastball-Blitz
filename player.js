@@ -10,7 +10,7 @@ class Player {
         //batter
         this.batterX = 460; // posición inicial
         this.batterMinusX = 0;
-        this.batterSpeed = 7;
+        this.batterSpeed = 5;
         this.batterRightMovement = true;
         this.batterLeftMovement = true;
         this.batterNode = document.querySelector("#batter");
