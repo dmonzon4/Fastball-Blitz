@@ -1,23 +1,4 @@
-// class Blitz {
-//     constructor () {
-//         //blitz
-//         this.blitzY = 10;
-//         this.blitzX = 10;
-//         this.blitzSpeed = 5;
-//         this.blitzNode = document.querySelector("#blitz");
-//     }
-
-//     movement = () => {
-//         //blitz
-//         this.blitzY += this.blitzSpeed;
-//         this.blitzNode.style.top = `${this.blitzY}px`; // Movimiento arriba hacia abajo*/
-
-//          if (this.blitzY + 20 > this.batterY) {
-//             console.log('blitz collision2');
-//         }
-//     }
-
-// }
+// console.log('probe blitz js');
 
 class Blitz {
   constructor(type, yPosition) {

@@ -1,25 +1,4 @@
-// class Ball {
-//     constructor () {
-//         //ball
-//         this.ballY = 10;
-//         this.ballX = 10;
-//         this.ballSpeed = 5;
-//         this.ballNode = document.querySelector("#ball");
-//     }
-
-//     movement = () => {
-//         //ball
-//         this.ballY += this.ballSpeed;
-//         this.ballNode.style.top = `${this.ballY}px`; // Movimiento arriba hacia abajo
-
-//         if (this.ballY + 20 > this.batterY &&
-//             this.ballX > this.batterX &&
-//             this.ballX + 20 < this.batterX + 120) {
-//             //console.log('ball collision2');
-//         }
-//     }
-
-// }
+// console.log('probe ball js');
 
 class Ball {
   constructor(type, yPosition) {
