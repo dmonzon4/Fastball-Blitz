@@ -1,5 +1,6 @@
 console.log("probe");
 
+
 class Game {
     constructor() {
         this.isGameOn = true;
