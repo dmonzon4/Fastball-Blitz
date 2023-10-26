@@ -22,13 +22,13 @@ class Game {
     // determinar cuando voy a agregar elementos al array
     if (this.timer % 120 === 0) {
 
-        let randomPosition = Math.random() * 50; // -100 y 0
+        let randomPosition = Math.random() * -100; // -100 y 0
 
-        let newBall = new Ball("left", randomPosition);
+        let newBall = new Ball("top", randomPosition);
         this.ballArr.push(newBall);
 
-        let newBallRight = new Blitz("right", randomPosition + 300);
-        this.ballArr.push(newBallRight);
+        let newBallBottom = new Ball("Top", randomPosition + 300);
+        this.ballArr.push(newBallBottom);
 
         console.log(this.ballArr.length);
     }
@@ -36,58 +36,64 @@ class Game {
     };
     
     // HACER DESAPARECER LAL BALLS
-    blitzDisappear = () => {
-        if (this.blitzArr[0].x < 0) {
+    ballDisappear = () => {
+        if (this.ballArr[0].x < 0) {
             // this.obstacleArr.splice(0,1); // otra opcion a lo que sigue abajo
-            this.blitzArr[0].node.remove(); // remueve el nodo del DOM
-            this.blitzArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
+            this.ballArr[0].ballNode.remove(); // remueve el nodo del DOM
+            this.ballArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
         }
     }
 
-    ballAppear = () => {
-        // determinar cuando voy a agregar elementos al array
-        if (this.timer % 120 === 0) {
+    // blitzAppear = () => {
+    //     // determinar cuando voy a agregar elementos al array
+    //     if (this.timer % 120 === 0) {
+    //         let randomPosition = Math.random() * -100; // -100 y 0
+
+    //         let newBlitz = new Blitz("top", randomPosition);
+    //         this.blitzArr.push(newBlitz);
+
+    //         let newBlitzBottom = new Blitz("Bottom", randomPosition + 300);
+    //         this.blitzArr.push(newBlitzBottom);
+
+    //         console.log(this.blitzArr.length);
+    //     }
     
-            let randomPosition = Math.random() * 75; // -100 y 0
-    
-            let newBlitz = new Ball("right", randomPosition);
-            this.blitzArr.push(newBlitz);
-    
-            let newBlitzleft = new Blitz("left", randomPosition + 350);
-            this.ballArr.push(newBlitzleft);
-    
-            console.log(this.blitzArr.length);
-        }
-    
-        };
+    //     };
         
-        // HACER DESAPARECER LOS BLITZES
-        blitzDisappear = () => {
-            if (this.blitzArr[0].x < 0) {
-                // this.obstacleArr.splice(0,1); // otra opcion a lo que sigue abajo
-                this.blitzArr[0].node.remove(); // remueve el nodo del DOM
-                this.blitzArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
+    // // HACER DESAPARECER LOS BLITZES
+    // blitzDisappear = () => {
+    //     if (this.blitzArr[0].x < 0) {
+    //         // this.obstacleArr.splice(0,1); // otra opcion a lo que sigue abajo
+    //         this.blitzArr[0].blitzNode.remove(); // remueve el nodo del DOM
+    //         this.blitzArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
+    //     }
+    // }
+
+    collisionCheckBall = () => {
+        this.ballArr.forEach((eachBall) => {
+            if (eachBall.ballX < this.batterX + this.batterX &&
+            eachBall.ballX + eachBall.ballW > this.batterX &&
+            eachBall.ballY + eachBall.ballY > this.batterX &&
+            eachBall.ballX + eachBall.ballH > this.batterX) { 
+            console.log ('colision batter');
+            this.gameOver();
             }
-        }
-
-        // acciones dentro del juego
-            // hitting
-            // movimiento del campo
-            // lanzamiento de bola
-            //lanzamiento de rayo
-
-        // colision de bola
-        // colision del rayo
+        });
+    }
 
         
 
         // gameloop
     gameLoop = () => {
         //console.log("gameLoop");
-        this.timer ++;
+        this.ballArr.forEach((eachBall) => {
+            eachBall.automaticMovement ();
+        });
+        this.ballAppear();
+        this.collisionCheckBall();
+        this.ballDisappear();
 
 
-        
         //movement();
         this.player.movement (); // mvieminto del batter
         this.pitcher.movement (); // moviemiento del pitcher
@@ -95,18 +101,16 @@ class Game {
         // this.blitz.movement (); // moviemiento antiguo
         this.oneBall.automaticMovement ();
 
-        
-
 
         this.player.wallCollisions ();
         this.pitcher.wallCollisions ();
         //collisions (); // invocando función del movimiento de la bola, blitz, batter, pitcher
         
 
-
         //batterCollision();
         
         // recursion
+        this.timer ++;
         if (this.isGameOn === true) {
         requestAnimationFrame(this.gameLoop);
         }

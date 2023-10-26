@@ -1,4 +1,5 @@
 let startBtnNode = document.querySelector("#start-btn");
+let backMenuBtnNode = document.querySelector("#backMenu-btn");
 let splashScreenNode = document.querySelector("#splash-screen");
 let fieldImageNode = document.querySelector("#field-image");
 let gameScreenNode = document.querySelector("#game-screen");
@@ -114,9 +115,16 @@ const startGame = () => {
 
 }
 
+const backMenu = () => {
+    splashScreenNode.style.display = "Flex";
+    fieldImageNode.style.display = "Flex";
+    gameScreenNode.style.display = "none";
+}
+
 
 // eventListeners
 startBtnNode.addEventListener("click", startGame);
+backMenuBtnNode.addEventListener("click", backMenu);
 
 // control del batter con las teclas
 document.addEventListener('keydown', (event) => {

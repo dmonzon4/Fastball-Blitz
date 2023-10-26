@@ -7,32 +7,23 @@ body {
 
   }
 
-  #start-btn {
-    background: blue;
-    color: white;
-    cursor: pointer;
-    padding: 20px;
-    font-size: 20px;
-    margin-top: 30px;
-    border-radius: 10px; 
-  }
+  /******************SPLASH-SCREEN***********************/
 
-.container {
-    display: flex;
+  #splash-screen {
+    height: 200px;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin: 50px;
+    
   }
 
-/*----------------------------------------------------------------*/
+  /*----------------------------------------------------------------*/
 
   .image1, .image2 {
     width: 250px;
     height: 100px;
     position: absolute;
     opacity: 0;
-    /* animation: fadeInOut 0.25s linear infinite alternate; */
+    animation: fadeInOut 0.25s linear infinite alternate;
   }
   
   /* Animación para intercalar las imágenes */
@@ -59,6 +50,32 @@ body {
     margin: 50px;
 
   }
+
+  #start-btn {
+    background: blue;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 30px;
+    border-radius: 10px; 
+  }
+
+    /******************GAME-SCREEN***********************/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+  }
+
+  #game-screen {
+    display: none;
+    flex-direction: row;
+    
+  }
     
 
   #game-box {
@@ -78,9 +95,9 @@ body {
     height: 10px;
     position: absolute;
     top: 25px;
-    left: 0px; */
+    left: 0px; 
 
-  }
+  }*/
 
   #blitz {
     width: 10px;
@@ -108,13 +125,18 @@ body {
     left: 220px; /*posición al iniciar/reiniciar el juego*/
 
   }
-  
-  
-  #game-screen {
-    display: none;
-    flex-direction: row;
-    
+
+  #backMenu-btn {
+    background: blue;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    font-size: 15px;
+    margin-top: 20px;
+    border-radius: 10px; 
   }
+
+  /******************GAMEOVER-SCREEN***********************/
   
   #gameover-screen {
     display: none;
