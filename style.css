@@ -129,6 +129,7 @@ body {
   }
 
   #backMenu-btn {
+    width: 110px;
     background: blue;
     color: white;
     cursor: pointer;

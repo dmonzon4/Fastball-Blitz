@@ -1,11 +1,9 @@
-// console.log('probe ball js');
-
 class Ball {
   constructor(type, yPosition) {
     this.ballNode = document.createElement("img");
 
     if (type === "top") {
-      this.ballNode.src = "./Bilder/ball.png";
+      // this.ballNode.src = "./Bilder/ball.png";
     } else {
       this.ballNode.src = "./Bilder/ball.png";
     }

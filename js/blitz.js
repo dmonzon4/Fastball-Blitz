@@ -1,11 +1,9 @@
-// console.log('probe blitz js');
-
 class Blitz {
   constructor(type, yPosition) {
     this.blitzNode = document.createElement("img");
 
     if (type === "top") {
-      this.blitzNode.src = "./Bilder/blitz.png";
+      // this.blitzNode.src = "./Bilder/blitz.png";
     } else {
       this.blitzNode.src = "./Bilder/blitz.png";
     }
