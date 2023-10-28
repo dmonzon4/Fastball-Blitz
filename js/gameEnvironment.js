@@ -8,6 +8,12 @@ class Game {
     this.blitzArr = [];
 
     this.timer = 0; // 60/seg.
+
+    this.score = 0;
+    this.bonus = 1;
+
+    this.GameOn = this.score > 0; // ?????
+    
   }
 
   ballAppear = () => {
@@ -44,22 +50,9 @@ class Game {
     }
   };
 
-  collisionCheckBlitz = () => {
-    this.blitzArr.forEach((eachBlitz) => {
-      if (
-        eachBlitz.blitzX < this.batterX + this.batterW &&
-        eachBlitz.blitzX + eachBlitz.blitzW > this.batterX &&
-        eachBlitz.blitzY + this.batterY > this.batterH &&
-        eachBlitz.blitzY + eachBlitz.blitzH > this.batterY
-      ) {
-        // console.log ('collision batter blitz');
-        this.gameOver();
-      }
-    });
-  };
-
 
   gameLoop = () => {
+    
     this.ballArr.forEach((eachBall) => {
       eachBall.automaticMovement();
     });
@@ -75,6 +68,7 @@ class Game {
     this.blitzDisappear();
 
     this.collisionCheckBlitz();
+    this.collisionCheckBall();
 
     //movement();
     // this.player.movement (); // movimiento del batter!!!
@@ -90,29 +84,44 @@ class Game {
     }
   };
 
-  // AJUSTAR!!!
-  // gameOver = () => {
-  //     // 1. la recursion deberia terminar
-  //     this.isGameOn = false;
-  //     // 1.1 si tenemos intervalos deberiamos limpiarlos
-  //     // 2. ocultar pantalla d ejuego
-  //     gameScreenNode.style.display = 'none';
-  //     //3. mostrar pantalla de Game Over
-  //     gameOverScreenNode.style.display = 'flex';
-  //   }
+  collisionCheckBall = () => {
+    this.ballArr.forEach((eachBall) => {
+      if (
+        eachBall.ballX < this.player.batterX + this.player.batterW &&
+        eachBall.ballX + eachBall.ballW > this.player.batterX &&
+        eachBall.ballY + this.player.batterY > this.player.batterH &&
+        eachBall.ballY + eachBall.ballH > this.player.batterY
+        ) {
+          this.score += this.bonus;
+          console.log ("collision ball");
+        }
+      });
+    };
 
-  //   collisionBallFloor = () => {
-  //     if (this.ball.ballY > 750) {
-  //         this.gameOver();
-  //     }
-  //   }
+  
+  collisionCheckBlitz = () => {
+    this.blitzArr.forEach((eachBlitz) => {
+      if (
+        eachBlitz.blitzX < this.player.batterX + this.player.batterW &&
+        eachBlitz.blitzX + eachBlitz.blitzW > this.player.batterX &&
+        eachBlitz.blitzY + this.player.batterY > this.player.batterH &&
+        eachBlitz.blitzY + eachBlitz.blitzH > this.player.batterY
+        ) {
+          console.log("collision blitz");
+          this.gameOver();
+        }
+      });
+    };
 
-  //   collisionBlitzFloor = () => {
-  //     if (this.blitz.blitzY > 750) {
-  //         this.gameOver();
-  //     }
-  //   }
-}
+
+    gameOver = () => {
+      this.isGameOn = false;
+      gameScreenNode.style.display = "none";
+      gameOverScreen.style.display = "flex";
+      batsImageNode.style.display = "flex";
+    };
+  }
+  
 
 // BONUS
 // efecto de choque de la bola con el jugador

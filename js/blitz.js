@@ -9,8 +9,8 @@ class Blitz {
     }
 
     gameBoxNode.append(this.blitzNode);
-    this.blitzW = 50;
-    this.blitzH = 50;
+    this.blitzW = 25;
+    this.blitzH = 35;
     this.blitzX = Math.random() * 400;
     this.blitzY = yPosition;
 
@@ -21,7 +21,7 @@ class Blitz {
     this.blitzNode.style.left = `${this.blitzX}px`;
     this.blitzNode.style.top = `${this.blitzY}px`;
 
-    this.speed = 3;
+    this.speed = 2;
   }
 
   automaticMovement = () => {

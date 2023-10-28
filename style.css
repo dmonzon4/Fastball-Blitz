@@ -13,7 +13,26 @@ body {
     height: 200px;
     flex-direction: column;
     justify-content: center;
-    
+    user-select: none;
+  }
+
+  #field-image{
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 0%;
+  }
+
+  #start-btn {
+    background: blue;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 30px;
+    border-radius: 10px; 
   }
 
   /*----------------------------------------------------------------*/
@@ -42,34 +61,7 @@ body {
 
 /*----------------------------------------------------------------*/
 
-  #field-image{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 50px;
 
-  }
-
-  #start-btn {
-    background: blue;
-    color: white;
-    cursor: pointer;
-    padding: 20px;
-    font-size: 20px;
-    margin-top: 30px;
-    border-radius: 10px; 
-  }
-
-  #game-over-btn {
-    background: none;
-    color: none;
-    cursor: pointer;
-    padding: 0px;
-    font-size: 0px;
-    margin-top: 10px;
-    border-radius: 10px; 
-  }
 
     /******************GAME-SCREEN***********************/
 
@@ -89,10 +81,9 @@ body {
     
 
   #game-box {
-    background-color: darkgray;
     width:530px;
     height:795px;
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
     user-select: none;
     background-image: url('./Bilder/field-cartoon-fn.jpg');
@@ -100,17 +91,15 @@ body {
     background-size: contain;
   }
 
-  /* #ball {
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: 25px;
-    left: 0px; 
+  #tribune {
+    position: relative;
+    user-select: none;
+  }
 
-  }*/
-  
+
 
   #pitcher {
+    padding-top: 20px;
     width: 10px;
     height: 10px;
     position: absolute;
@@ -119,31 +108,46 @@ body {
 
   }
 
-  #batter {
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: 685px;
-    left: 220px; /*posición al iniciar/reiniciar el juego*/
+  /******************GAMEOVER-SCREEN***********************/
+
+  #gameOver-screen {
+    display: none;
+    height: 300px;
+    flex-direction: column;
+    justify-content: center;
+    user-select: none;
+  }
+
+  #bats-image{
+    display: none;
+    height: 450px;
+    flex-direction: column;
+    justify-content: center;
+    user-select: none;
+    align-items: center;
+    margin: 50px;
 
   }
 
-  #backMenu-btn {
-    width: 110px;
+  #restart-btn {
     background: blue;
     color: white;
     cursor: pointer;
-    padding: 15px;
-    font-size: 15px;
-    margin-top: 20px;
-    border-radius: 10px; 
-  }
-
-  /******************GAMEOVER-SCREEN***********************/
-  
-  /* #gameover-screen {
-    height: 200px;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
     flex-direction: column;
     justify-content: center;
-    background-image: url('./Bilder/field-start-gruen.jpg');
-  } */
+    user-select: none;
+  }
+
+  #restart-btn {
+    background: blue;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 30px;
+    border-radius: 10px; 
+  }
