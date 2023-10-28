@@ -12,6 +12,9 @@ class Game {
     this.score = 0;
     this.bonus = 1;
 
+    this.lives = 3;
+    this.damage = 1;
+
     this.GameOn = this.score > 0; // ?????
     
   }
@@ -93,7 +96,11 @@ class Game {
         eachBall.ballY + eachBall.ballH > this.player.batterY
         ) {
           this.score += this.bonus;
-          console.log ("collision ball");
+          console.log ("sumando");
+          this.ballArr[0].ballNode.remove();
+          this.ballArr.shift();
+          this.updateScore();
+
         }
       });
     };
@@ -107,20 +114,40 @@ class Game {
         eachBlitz.blitzY + this.player.batterY > this.player.batterH &&
         eachBlitz.blitzY + eachBlitz.blitzH > this.player.batterY
         ) {
-          console.log("collision blitz");
-          this.gameOver();
+          this.lives -= this.damage;
+          console.log("restando");
+          this.blitzArr[0].blitzNode.remove();
+          this.blitzArr.shift();
+          this.updateLives();
+          if (this.lives === 0) {
+            this.gameOver();
+          }
+
+
         }
       });
     };
 
+    updateScore() {
+      const scoreElement = document.querySelector("#score");
+      scoreElement.innerText = this.score;
+    }
+
+    updateLives() {
+      const livesElement = document.querySelector("#lives");
+      livesElement.innerText = this.lives;
+    }
+
 
     gameOver = () => {
+      if (this.lives === 0) {
       this.isGameOn = false;
       gameScreenNode.style.display = "none";
       gameOverScreen.style.display = "flex";
       batsImageNode.style.display = "flex";
-    };
-  }
+      };
+    }
+  };
   
 
 // BONUS

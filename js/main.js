@@ -8,15 +8,17 @@ let fieldImageNode = document.querySelector("#field-image");
 let gameScreenNode = document.querySelector("#game-screen");
 let gameBoxNode = document.querySelector("#game-box");
 
+
 let gameOverScreen = document.querySelector("#gameOver-screen");
 let batsImageNode = document.querySelector("#bats-image");
 
 let gameBoxWidth = 490;
 let gameBoxHeight = 795;
 
-let score = document.querySelector("#scoreValue");
 
 let gameObject = undefined;
+
+let scoreScreenNode = document.querySelector("#scoreDisplay");
 
 
 // // funcion para verificar la colision de ball y blitz en la parte inferior
