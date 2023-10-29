@@ -16,8 +16,38 @@ class Game {
     this.damage = 1;
 
     this.GameOn = this.score > 0; // ?????
-    
   }
+
+  playMusic() {
+    const musicElement = document.querySelector("#splash-screen-audio");
+    musicElement.volume = 0.1;
+    musicElement.currentTime = 0;
+    musicElement.play();
+  }
+
+  stopMusic() {
+    const musicElement = document.querySelector("#splash-screen-audio");
+    musicElement.pause();
+  }
+
+  gameOverMusic () {
+    const gameOverElement = document.querySelector("#game-over-music");
+    gameOverElement.volume = 0.7;
+    gameOverElement.play();
+  }
+  
+
+  ballSound = () => {
+    const ballImpact = document.querySelector("#ball-sound");
+    ballImpact.volume = 0.9;
+    ballImpact.play();
+  };
+
+  blitzSound = () => {
+    const blitzImpact = document.querySelector("#blitz-sound");
+    blitzImpact.volume = 0.9;
+    blitzImpact.play();
+  };
 
   ballAppear = () => {
     if (this.timer % 120 === 0) {
@@ -53,9 +83,67 @@ class Game {
     }
   };
 
+  collisionCheckBall = () => {
+    this.ballArr.forEach((eachBall) => {
+      if (
+        eachBall.ballX < this.player.batterX + this.player.batterW &&
+        eachBall.ballX + eachBall.ballW > this.player.batterX &&
+        eachBall.ballY + this.player.batterY > this.player.batterH &&
+        eachBall.ballY + eachBall.ballH > this.player.batterY
+      ) {
+        this.score += this.bonus;
+        console.log("sumando");
+        this.ballArr[0].ballNode.remove();
+        this.ballArr.shift();
+        this.updateScore();
+        this.ballSound();
+      }
+    });
+  };
 
+  collisionCheckBlitz = () => {
+    this.blitzArr.forEach((eachBlitz) => {
+      if (
+        eachBlitz.blitzX < this.player.batterX + this.player.batterW &&
+        eachBlitz.blitzX + eachBlitz.blitzW > this.player.batterX &&
+        eachBlitz.blitzY + this.player.batterY > this.player.batterH &&
+        eachBlitz.blitzY + eachBlitz.blitzH > this.player.batterY
+      ) {
+        this.lives -= this.damage;
+        console.log("restando");
+        this.updateLives();
+
+        this.blitzArr[0].blitzNode.remove();
+        this.blitzArr.shift();
+        this.blitzSound();
+
+        if (this.lives <= 0) {
+          this.gameOver();
+        }
+      }
+    });
+  };
+
+  updateScore() {
+    const scoreElement = document.querySelector("#score");
+    scoreElement.innerText = this.score;
+  }
+
+  updateLives() {
+    const livesElement = document.querySelector("#lives");
+    livesElement.innerText = this.lives;
+  }
+
+  gameOver = () => {
+    if (this.lives === 0) {
+      gameScreenNode.style.display = "none";
+      gameOverScreen.style.display = "flex";
+      batsImageNode.style.display = "flex";
+      this.stopMusic();
+      this.gameOverMusic();
+    }
+  };
   gameLoop = () => {
-    
     this.ballArr.forEach((eachBall) => {
       eachBall.automaticMovement();
     });
@@ -86,73 +174,5 @@ class Game {
       requestAnimationFrame(this.gameLoop);
     }
   };
+}
 
-  collisionCheckBall = () => {
-    this.ballArr.forEach((eachBall) => {
-      if (
-        eachBall.ballX < this.player.batterX + this.player.batterW &&
-        eachBall.ballX + eachBall.ballW > this.player.batterX &&
-        eachBall.ballY + this.player.batterY > this.player.batterH &&
-        eachBall.ballY + eachBall.ballH > this.player.batterY
-        ) {
-          this.score += this.bonus;
-          console.log ("sumando");
-          this.ballArr[0].ballNode.remove();
-          this.ballArr.shift();
-          this.updateScore();
-
-        }
-      });
-    };
-
-  
-  collisionCheckBlitz = () => {
-    this.blitzArr.forEach((eachBlitz) => {
-      if (
-        eachBlitz.blitzX < this.player.batterX + this.player.batterW &&
-        eachBlitz.blitzX + eachBlitz.blitzW > this.player.batterX &&
-        eachBlitz.blitzY + this.player.batterY > this.player.batterH &&
-        eachBlitz.blitzY + eachBlitz.blitzH > this.player.batterY
-        ) {
-          this.lives -= this.damage;
-          console.log("restando");
-          this.blitzArr[0].blitzNode.remove();
-          this.blitzArr.shift();
-          this.updateLives();
-          if (this.lives === 0) {
-            this.gameOver();
-          }
-
-
-        }
-      });
-    };
-
-    updateScore() {
-      const scoreElement = document.querySelector("#score");
-      scoreElement.innerText = this.score;
-    }
-
-    updateLives() {
-      const livesElement = document.querySelector("#lives");
-      livesElement.innerText = this.lives;
-    }
-
-
-    gameOver = () => {
-      if (this.lives === 0) {
-      this.isGameOn = false;
-      gameScreenNode.style.display = "none";
-      gameOverScreen.style.display = "flex";
-      batsImageNode.style.display = "flex";
-      };
-    }
-  };
-  
-
-// BONUS
-// efecto de choque de la bola con el jugador
-// efecto de homerun
-// efecto de golpe de rayo
-// contador de vida y gameover
-// aumneto de velocidad con el tiempo

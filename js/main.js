@@ -21,6 +21,7 @@ let gameObject = undefined;
 let scoreScreenNode = document.querySelector("#scoreDisplay");
 
 
+
 // // funcion para verificar la colision de ball y blitz en la parte inferior
 // function batterCollision () {
 //     if (this.ballY + 20 > this.batterY &&
@@ -40,6 +41,7 @@ const startGame = () => {
   gameOverScreen.style.display = "none";
 
   gameObject = new Game();
+  gameObject.playMusic();
   gameObject.gameLoop();
 };
 
@@ -52,6 +54,7 @@ const reStartGame = () => {
   batsImageNode.style.display = "none";
 
   gameObject = new Game();
+  gameObject.playMusic();
   gameObject.gameLoop();
 };
 
@@ -64,9 +67,11 @@ const gameOver = () => {
   gameOverScreen.style.display = "flex";
   batsImageNode.style.display = "flex";
 
-  // gameObject = new Game();
-  // gameObject.gameLoop();
+  gameObject = new Game();
+  gameObject.gameLoop();
 };
+
+
 
 // eventListeners
 startBtnNode.addEventListener("click", startGame);

@@ -21,6 +21,14 @@
 
     <!-- GAME SCREEN -->
     <div id="game-screen" class="container">
+      <audio
+        id="splash-screen-audio"
+        src="./Musik/game.mp3"
+        preload="auto"
+        loop
+      ></audio>
+      <audio id="ball-sound" src="./Musik/ball.mp3" preload="auto"></audio>
+      <audio id="blitz-sound" src="./Musik/blitz.mp3" preload="auto"></audio>
       <img src="./Bilder/tribune-voll.png" width="288" alt="tribune" />
       <div id="game-box">
         <!-- Game elements are added here -->
@@ -28,17 +36,20 @@
           <p id="scoreDisplay">Score: <span id="score">0</span></p>
           <p id="livesDisplay">Lives: <span id="lives">3</span></p>
       </div>
-        <!-- <div id="scoreDisplay">Lives: 0</div> -->
         <div id="pitcher">
           <img src="./Bilder/pitcher.png" width="50" alt="blitz" />
         </div>
       </div>
       <img id="tribune" src="./Bilder/tribune-voll-mirror.png" width="288" alt="tribune" />
-      <!-- <button id="backMenu-btn"">Back to Main Menu</button> -->
     </div>
     
     <!-- GAME OVER SCREEN -->
     <div id="gameOver-screen" class="container" >
+      <audio
+        id="game-over-music"
+        src="./Musik/gameover.mp3"
+        preload="auto"
+      ></audio
       <img class= "image2" src="./Bilder/gameover.png" width="250" alt="logo" />
       <img class= "image2" src="./Bilder/gameover.png" width="250" alt="logo" />
     </div>

@@ -33,6 +33,13 @@ body {
     font-size: 20px;
     margin-top: 30px;
     border-radius: 10px; 
+    width: 100px;
+    font-family: 'Bangers', cursive; 
+    font-size: 15px; 
+    border-width: 4px;
+    border-radius: 35px; 
+    padding: 10px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 1); 
   }
 
   /*----------------------------------------------------------------*/
@@ -82,7 +89,7 @@ body {
   #game-box {
     width:530px;
     height:795px;
-    /* overflow: hidden; */
+    overflow: hidden;
     position: relative;
     user-select: none;
     background-image: url('./Bilder/field-cartoon-fn.jpg');
@@ -95,53 +102,49 @@ body {
     justify-content: space-between;
   }
 
-  #scoreDisplay,
-  #livesDisplay {
-    margin-top: 5px;
-    padding-top: 5px;
-  }
-
   #scoreDisplay {
     width: 100px;
-    font-family: 'Press Start 2P', cursive; /* Aplicar la fuente Press Start 2P */
-    font-size: 20px; /* Tamaño del texto */
-    color: #fff; /* Color del texto */
-    background-color: #4CAF50; /* Color de fondo */
-    padding: 10px; /* Relleno */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px; 
+    color: #fff; 
+    background-color: #4CAF50; 
+    padding: 10px; 
+    border-radius: 8px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   }
 
   #score {
     width: 100px;
-    background-color: #4CAF50; /* Cambio del color verde a un tono más moderno */
-    font-family: 'Bangers', cursive; /* Aplicar la fuente Bangers */
-    font-size: 15px; /* Aumentar el tamaño del texto para enfatizar el
-    color: #fff; /* Usar un color blanco para el texto en lugar de 'azure' */
-    border-radius: 8px; /* Agregar bordes redondeados para un aspecto más suave */
-    padding: 10px; /* Agregar relleno para mejorar la legibilidad y apariencia */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 1); /* Añadir una ligera sombra para destacar el elemento */
+    background-color: #4CAF50; 
+    font-family: 'Bangers', cursive; 
+    font-size: 15px; 
+    color: #fff;
+    border-width: 4px;
+    border-radius: 35px; 
+    padding: 10px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 1); 
   }
 
   #livesDisplay {
     width: 100px;
-    font-family: 'Press Start 2P', cursive; /* Aplicar la fuente Press Start 2P */
-    font-size: 20px; /* Tamaño del texto */
-    color: #fff; /* Color del texto */
-    background-color:red; /* Color de fondo */
-    padding: 10px; /* Relleno */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+    font-family: 'Press Start 2P', cursive; 
+    font-size: 20px; 
+    color: #fff; 
+    background-color:red; 
+    padding: 10px; 
+    border-radius: 8px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   }
   #lives {
     width: 100px;
-    background-color: red; /* Cambio del color verde a un tono más moderno */
-    font-family: 'Bangers', cursive; /* Aplicar la fuente Bangers */
-    font-size: 15px; /* Aumentar el tamaño del texto para enfatizar el
-    color: #fff; /* Usar un color blanco para el texto en lugar de 'azure' */
-    border-radius: 8px; /* Agregar bordes redondeados para un aspecto más suave */
-    padding: 10px; /* Agregar relleno para mejorar la legibilidad y apariencia */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 1); /* Añadir una ligera sombra para destacar el elemento */
+    background-color: red; 
+    font-family: 'Bangers', cursive; 
+    font-size: 15px; 
+    color: #fff; 
+    border-width: 4px;
+    border-radius: 35px; 
+    padding: 10px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 1); 
   }
 
   #tribune {
@@ -188,8 +191,12 @@ body {
     padding: 20px;
     font-size: 20px;
     margin-top: 30px;
-    border-radius: 10px;
-    flex-direction: column;
-    justify-content: center;
-    user-select: none;
+    border-radius: 10px; 
+    width: 100px;
+    font-family: 'Bangers', cursive; 
+    font-size: 15px; 
+    border-width: 4px;
+    border-radius: 35px; 
+    padding: 10px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 1); 
   }
