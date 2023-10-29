@@ -46,19 +46,6 @@ const startGame = () => {
 };
 
 
-const reStartGame = () => {
-  splashScreenNode.style.display = "none"; //lo quita y pone el juego
-  fieldImageNode.style.display = "none"; //lo quita y pone el juego
-  gameScreenNode.style.display = "flex"; // pone el juego (game box también)
-  gameOverScreen.style.display = "none";
-  batsImageNode.style.display = "none";
-
-  gameObject = new Game();
-  gameObject.playMusic();
-  gameObject.gameLoop();
-};
-
-
 
 const gameOver = () => {
   splashScreenNode.style.display = "none";
@@ -68,6 +55,18 @@ const gameOver = () => {
   batsImageNode.style.display = "flex";
 
   gameObject = new Game();
+  gameObject.gameLoop();
+};
+
+const reStartGame = () => {
+  splashScreenNode.style.display = "none"; //lo quita y pone el juego
+  fieldImageNode.style.display = "none"; //lo quita y pone el juego
+  gameScreenNode.style.display = "flex"; // pone el juego (game box también)
+  gameOverScreen.style.display = "none";
+  batsImageNode.style.display = "none";
+
+  gameObject = new Game();
+  gameObject.playMusic();
   gameObject.gameLoop();
 };
 

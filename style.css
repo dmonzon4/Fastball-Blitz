@@ -89,7 +89,7 @@ body {
   #game-box {
     width:530px;
     height:795px;
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
     user-select: none;
     background-image: url('./Bilder/field-cartoon-fn.jpg');
@@ -114,8 +114,8 @@ body {
   }
 
   #score {
-    width: 100px;
-    background-color: #4CAF50; 
+    /* width: 10px; */
+    /* background-image: url('./Bilder/ball-mini.png');  */
     font-family: 'Bangers', cursive; 
     font-size: 15px; 
     color: #fff;
@@ -136,8 +136,8 @@ body {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   }
   #lives {
-    width: 100px;
-    background-color: red; 
+    /* width: 100px; */
+    /* background-image: url('./Bilder/blitz-mini.png'); */
     font-family: 'Bangers', cursive; 
     font-size: 15px; 
     color: #fff; 

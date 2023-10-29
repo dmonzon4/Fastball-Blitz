@@ -50,38 +50,50 @@ class Game {
   };
 
   ballAppear = () => {
-    if (this.timer % 120 === 0) {
+    if (this.timer % 60 === 0) {
       let randomPosition = Math.random() * -100; // -100 y 0
 
-      let newBall = new Ball("Left", randomPosition);
+      let newBall = new Ball(randomPosition);
       this.ballArr.push(newBall);
     }
   };
 
   blitzAppear = () => {
     if (this.timer % 120 === 0) {
-      let randomPosition = Math.random() * -50;
+      let randomPosition = Math.random() * -100;
 
       let newBlitz = new Blitz("Left", randomPosition);
       this.blitzArr.push(newBlitz);
     }
   };
 
-  // HACER DESAPARECER LAS BALLS
-  ballDisappear = () => {
-    if (this.ballArr[0].ballX < 0) {
-      this.ballArr[0].ballNode.remove(); // remueve el nodo del DOM
-      this.ballArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
-    }
-  };
+  //------------------------------------------------------------------------------------------------------
 
-  // HACER DESAPARECER LOS BLITZES
-  blitzDisappear = () => {
-    if (this.blitzArr[0].blitzX < 0) {
-      this.blitzArr[0].blitzNode.remove(); // remueve el nodo del DOM
-      this.blitzArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
-    }
+  // // HACER DESAPARECER LAS BALLS
+  // ballDisappear = () => {
+  //   if (this.ballArr[0].ballX < 0) {
+  //     this.ballArr[0].ballNode.remove(); // remueve el nodo del DOM
+  //     this.ballArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
+  //   }
+  // };
+
+  // // HACER DESAPARECER LOS BLITZES
+  // blitzDisappear = () => {
+  //   if (this.blitzArr[0].blitzX < 0) {
+  //     this.blitzArr[0].blitzNode.remove(); // remueve el nodo del DOM
+  //     this.blitzArr.shift(); // lo elimina del array para que no se siga moviendo o colisionando
+  //   }
+  // };
+
+
+  ballDisappear = () => {
+    this.ballArr = this.ballArr.filter(eachBall => eachBall.ballX >= 0);
   };
+  
+  blitzDisappear = () => {
+    this.blitzArr = this.blitzArr.filter(eachBlitz => eachBlitz.blitzX >= 0);
+  };
+  // -----------------------------------------------------------------------------------------------------------
 
   collisionCheckBall = () => {
     this.ballArr.forEach((eachBall) => {
@@ -117,7 +129,7 @@ class Game {
         this.blitzArr.shift();
         this.blitzSound();
 
-        if (this.lives <= 0) {
+        if (this.lives === 0) {
           this.gameOver();
         }
       }
@@ -143,7 +155,12 @@ class Game {
       this.gameOverMusic();
     }
   };
+
   gameLoop = () => {
+    // if (this.isGameOn === false) {
+    //   return; // Si el juego ya no está activo, sal del loop
+    // }
+  
     this.ballArr.forEach((eachBall) => {
       eachBall.automaticMovement();
     });
@@ -162,7 +179,7 @@ class Game {
     this.collisionCheckBall();
 
     //movement();
-    // this.player.movement (); // movimiento del batter!!!
+    // this.player.movement (); // movimiento del batter (no borrar!!!)
     this.pitcher.movement();
 
     this.player.wallCollisions();

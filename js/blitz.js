@@ -1,5 +1,5 @@
 class Blitz {
-  constructor(type, yPosition) {
+  constructor(type, xPosition) {
     this.blitzNode = document.createElement("img");
 
     if (type === "top") {
@@ -12,7 +12,7 @@ class Blitz {
     this.blitzW = 25;
     this.blitzH = 35;
     this.blitzX = Math.random() * 400;
-    this.blitzY = yPosition;
+    this.blitzY = xPosition;
 
     //DOM
     this.blitzNode.style.width = `${this.blitzW}px`;

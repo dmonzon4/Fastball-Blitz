@@ -1,18 +1,13 @@
 class Ball {
-  constructor(type, yPosition) {
+  constructor(xPosition) {
     this.ballNode = document.createElement("img");
-
-    if (type === "top") {
-      // this.ballNode.src = "./Bilder/ball.png";
-    } else {
-      this.ballNode.src = "./Bilder/ball.png";
-    }
+    this.ballNode.src = "./Bilder/ball.png";
 
     gameBoxNode.append(this.ballNode);
     this.ballW = 25;
     this.ballH = 25;
     this.ballX = Math.random() * 400;
-    this.ballY = yPosition;
+    this.ballY = xPosition;
 
     //DOM
     this.ballNode.style.width = `${this.ballW}px`;

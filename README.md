@@ -2,7 +2,7 @@
 
 ## [Play the Game!](https://dmonzon4.github.io/Fastball-Blitz/)
 
-![Game Logo](./Bilder/Logo.png)
+![Game Logo](./Bilder/Logo.jpg)
 
 
 # Description
